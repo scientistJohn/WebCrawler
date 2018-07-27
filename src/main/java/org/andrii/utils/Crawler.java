@@ -19,12 +19,7 @@ public class Crawler {
     private static final int timeout = 100000;
     private URL startPage;
     private Pattern validity;
-    private TreeSet<URL> linksToBeProcessed = new TreeSet<>(new Comparator<URL>() {
-        @Override
-        public int compare(URL o1, URL o2) {
-            return (o1.toString()).compareTo(o2.toString());
-        }
-    });
+    private TreeSet<URL> linksToBeProcessed = new TreeSet<>(Comparator.comparing(URL::toString));
     private Set<URL> processedLinks = new HashSet<>();
 
     public Crawler(String startPageLink) throws MalformedURLException {
